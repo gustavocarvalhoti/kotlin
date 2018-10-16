@@ -5,3 +5,4 @@ Resolvendo esse erro -> KVM is required to run this AVD. /dev/kvm device: permis
 sudo apt install qemu-kvm<br/>
 sudo adduser <Replace with username> kvm<br/>
 sudo chown <Replace with username> /dev/kvm<br/>
+sudo setfacl -m u:$USER:rwx /dev/kvm
