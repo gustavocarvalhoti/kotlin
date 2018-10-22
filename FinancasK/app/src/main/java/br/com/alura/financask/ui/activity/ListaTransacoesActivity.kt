@@ -3,7 +3,8 @@ package br.com.alura.financask.ui.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import br.com.alura.financask.R
-import br.com.alura.financask.model.Transacao
+import br.com.alura.financask.model.Tipo
+import br.com.alura.financask.model.Transaction
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
 import java.math.BigDecimal
@@ -33,8 +34,8 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
 
         val transacoes = listOf(
-            Transacao(BigDecimal(20), "Comida", Calendar.getInstance()),
-            Transacao(BigDecimal(100), "Economia", Calendar.getInstance())
+            Transaction(valor = BigDecimal(20), categoria = "Comida", tipo = Tipo.DESPESA),
+            Transaction(valor = BigDecimal(100), categoria = "Economia", tipo = Tipo.RECEITA)
         )
 
         // Instanciando o adapter

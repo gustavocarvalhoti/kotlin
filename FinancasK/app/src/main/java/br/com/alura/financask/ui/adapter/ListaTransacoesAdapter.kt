@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import br.com.alura.financask.R
-import br.com.alura.financask.model.Transacao
+import br.com.alura.financask.model.Transaction
 import kotlinx.android.synthetic.main.transacao_item.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 // Criando nosso adapter
 // transacoes: List<String>) -> recebe parametros no construtor
-class ListaTransacoesAdapter(transacoes: List<Transacao>, context: Context) : BaseAdapter() {
+class ListaTransacoesAdapter(transacoes: List<Transaction>, context: Context) : BaseAdapter() {
 
     private val transacoes = transacoes
     private val context = context
@@ -25,8 +23,8 @@ class ListaTransacoesAdapter(transacoes: List<Transacao>, context: Context) : Ba
         //Setando os valores
         val transacao = getItem(posicao)
         viewCriada.transacao_valor.setText(transacao.valor.toString())
-        //viewCriada.transacao_data.setText(formataParaBrasileiro(transacao.data))
-        viewCriada.transacao_data.setText(transacao.dataFormatoBrasileiro)
+        //viewCriada.transacao_data.setText(PTBR(transacao.data))
+        viewCriada.transacao_data.setText(transacao.dataPTBR)
         viewCriada.transacao_categoria.setText(transacao.categoria)
 
         return viewCriada
@@ -35,9 +33,9 @@ class ListaTransacoesAdapter(transacoes: List<Transacao>, context: Context) : Ba
     // fun getDate(data: Calendar): String {
     // função nomeFunção(nomeAtributo: TipoAtributoQueRecebe) : TipoAtributoQueRetorna {
     /*
-    fun formataParaBrasileiro(data: Calendar): String {
-        val formatoBrasileiro = "dd/MM/yyyy"
-        val format = SimpleDateFormat(formatoBrasileiro)
+    fun PTBR(data: Calendar): String {
+        val PTBR = "dd/MM/yyyy"
+        val format = SimpleDateFormat(PTBR)
         val dataFormatada = format.format(data.time)
         return dataFormatada
     }
@@ -45,7 +43,7 @@ class ListaTransacoesAdapter(transacoes: List<Transacao>, context: Context) : Ba
 
     // Any - retorna qualquer coisa - override fun getItem(position: Int): Any {
     // Posso trocar por String
-    override fun getItem(position: Int): Transacao {
+    override fun getItem(position: Int): Transaction {
         // old - return transacoes.get(position)
         // new - return transacoes[position]
         return transacoes[position]
