@@ -1,7 +1,7 @@
 package br.com.alura.financask.model
 
+import br.com.alura.financask.extension.ptBR
 import java.math.BigDecimal
-import java.text.SimpleDateFormat
 import java.util.*
 
 // Na parte de cima ele recebe essas variaveis no construtor
@@ -15,14 +15,9 @@ class Transaction(
 ) {
 
     // Gets e Sets
-    val dataPTBR: String = data.PTBR()
+    val dataPTBR: String = data.ptBR()
 
-    fun Calendar.PTBR(): String {
-        val formatoBrasileiro = "dd/MM/yyyy"
-        val format = SimpleDateFormat(formatoBrasileiro)
-        val dataFormatada = format.format(this.time)
-        return dataFormatada
-    }
+
 
     // OLD
     // Sobrecarga de construtor, ele olha para o principal e nos da essa nova opção

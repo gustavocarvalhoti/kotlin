@@ -25,17 +25,23 @@ class ListaTransacoesActivity : AppCompatActivity() {
         // Declara o layout
         setContentView(R.layout.activity_lista_transacoes)
 
-        // Cria uma lista simples
         // var - cariavel mutavel
         // val - variavel imutavel
         // Para gravar em uma variavel não precisa setar o tipo - só se quiser \0/
+
+        // Cria uma lista simples
         // val lista: List<String> = listOf("Comida - 20,00", "Ecomnomia - 100,00")
-        //val transacoes = listOf("Comida - 20,00", "Ecomnomia - 100,00")
+        // val transacoes = listOf("Comida - 20,00", "Ecomnomia - 100,00")
 
-
+        // Abaixo ele nomeia as variaveis que serão setadas no contrutor, ai ele não depende da ordem
         val transacoes = listOf(
-            Transaction(valor = BigDecimal(20), categoria = "Comida", tipo = Tipo.DESPESA),
-            Transaction(valor = BigDecimal(100), categoria = "Economia", tipo = Tipo.RECEITA)
+            Transaction(valor = BigDecimal(20), tipo = Tipo.DESPESA, categoria = "Comida"),
+            Transaction(valor = BigDecimal(100), categoria = "Pagamento", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(20000), categoria = "Venda do carro", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(5500), categoria = "Venda da moto", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA)
         )
 
         // Instanciando o adapter
@@ -47,6 +53,10 @@ class ListaTransacoesActivity : AppCompatActivity() {
         // No Kotlin \0/ utiliza o synthetic com base no Layout
         //lista_transacoes_listview.setAdapter(arrayAdapter)
 
-        lista_transacoes_listview.setAdapter(ListaTransacoesAdapter(transacoes, this))
+        // OLD
+        // lista_transacoes_listview.setAdapter(ListaTransacoesAdapter(transacoes, this))
+
+        // NEW - Com prop
+        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
     }
 }
