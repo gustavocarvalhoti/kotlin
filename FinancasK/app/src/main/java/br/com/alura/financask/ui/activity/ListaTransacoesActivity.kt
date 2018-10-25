@@ -8,7 +8,6 @@ import br.com.alura.financask.model.Transaction
 import br.com.alura.financask.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
 import java.math.BigDecimal
-import java.util.*
 
 class ListaTransacoesActivity : AppCompatActivity() {
 
@@ -34,15 +33,7 @@ class ListaTransacoesActivity : AppCompatActivity() {
         // val transacoes = listOf("Comida - 20,00", "Ecomnomia - 100,00")
 
         // Abaixo ele nomeia as variaveis que serão setadas no contrutor, ai ele não depende da ordem
-        val transacoes = listOf(
-            Transaction(valor = BigDecimal(20), tipo = Tipo.DESPESA, categoria = "Comida"),
-            Transaction(valor = BigDecimal(100), categoria = "Pagamento", tipo = Tipo.RECEITA),
-            Transaction(valor = BigDecimal(20000), categoria = "Venda do carro", tipo = Tipo.RECEITA),
-            Transaction(valor = BigDecimal(5500), categoria = "Venda da moto", tipo = Tipo.RECEITA),
-            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA),
-            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA),
-            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA)
-        )
+        val transacoes: List<Transaction> = criarTransacoesExemplo()
 
         // Instanciando o adapter
         // val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, transacoes)
@@ -57,6 +48,22 @@ class ListaTransacoesActivity : AppCompatActivity() {
         // lista_transacoes_listview.setAdapter(ListaTransacoesAdapter(transacoes, this))
 
         // NEW - Com prop
+        configurarLista(transacoes)
+    }
+
+    private fun configurarLista(transacoes: List<Transaction>) {
         lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
+    }
+
+    fun criarTransacoesExemplo(): List<Transaction> {
+        return listOf(
+            Transaction(valor = BigDecimal(20), tipo = Tipo.DESPESA, categoria = "Comida de fianal de semana"),
+            Transaction(valor = BigDecimal(100), categoria = "Pagamento", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(20000), categoria = "Venda do carro", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(5500), categoria = "Venda da moto", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA),
+            Transaction(valor = BigDecimal(500000), categoria = "Venda da casa", tipo = Tipo.RECEITA)
+        )
     }
 }

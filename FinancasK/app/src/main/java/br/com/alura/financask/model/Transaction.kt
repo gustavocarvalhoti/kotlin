@@ -17,8 +17,6 @@ class Transaction(
     // Gets e Sets
     val dataPTBR: String = data.ptBR()
 
-
-
     // OLD
     // Sobrecarga de construtor, ele olha para o principal e nos da essa nova opção
     //constructor(valor: BigDecimal, tipo: Tipo) : this(valor, "Indefinido", tipo)

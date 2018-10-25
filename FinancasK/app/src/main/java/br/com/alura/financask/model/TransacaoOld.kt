@@ -4,7 +4,7 @@ import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Transacao(valor: BigDecimal, categoria: String, data: Calendar) {
+class TransacaoOld(valor: BigDecimal, categoria: String, data: Calendar) {
 
     // Precisa ser inicializado = valor (Recebe um valor default)
     // private val valor = valor - Ele aceita assi tb
